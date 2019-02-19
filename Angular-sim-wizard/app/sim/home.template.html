@@ -1,0 +1,73 @@
+<div class="SubMenu">
+    <div class="card" style="">
+      <br/>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="col-sm-3">
+            <button class="btn btn-primary btn-block" ng-click="$ctrl.new()">{{ $ctrl.currentButton }}</button><br/>
+          </div>
+          <div ng-if="$ctrl.wizardExists" class="col-sm-3">
+            <button class="btn btn-danger btn-block" ng-click="$ctrl.delete()">Delete Wizard</button><br/>
+          </div>
+        </div>
+      </div>
+      <div class ="SIMSLAPerformancedisplay card-body">    
+      <!-- SLA Performance table wich should be populated by via an API call [-- *API NAME* --] -->  
+      <table class="table table-bordered table-striped">
+        <thead>
+          <th colspan="13">
+            <h4>Services </h4>      
+          </th>           
+          <tr scope="row">
+            <th scope="col" width="250">Service Name</th>
+            <th scope="col"> Jan </th>
+            <th scope="col"> Feb </th>
+            <th scope="col"> Mar </th>
+            <th scope="col"> Apr </th>
+            <th scope="col"> May </th>
+            <th scope="col"> Jun </th>
+            <th scope="col"> Jul </th>
+            <th scope="col"> Aug </th>
+            <th scope="col"> Sep </th>
+            <th scope="col"> Oct </th>
+            <th scope="col"> Nov </th>
+            <th scope="col"> Dec </th>
+          </tr>
+        </thead>    
+        <tbody >
+          <tr ng-repeat="row in $ctrl.pivotRows">
+            <td> {{ row.name }} </td>
+            <td>{{ row.rowData.Jan }}</td>
+            <td>{{ row.rowData.Feb }}</td>
+            <td>{{ row.rowData.Mar }}</td>
+            <td>{{ row.rowData.Apr }}</td>
+            <td>{{ row.rowData.May }}</td>
+            <td>{{ row.rowData.Jun }}</td>
+            <td>{{ row.rowData.Jul }}</td>
+            <td>{{ row.rowData.Aug }}</td>
+            <td>{{ row.rowData.Sep }}</td>
+            <td>{{ row.rowData.Oct }}</td>
+            <td>{{ row.rowData.Nov }}</td>
+            <td>{{ row.rowData.Dec }}</td>
+          </tr>
+          <tr ng-if="$ctrl.services.length == 0 || $ctrl.dataError"><td colspan="13" align="center">{{ $ctrl.dataStatus }}</td></tr>
+        </tbody>
+      </table><br/><br/>
+    </div>
+
+    <div class="row">      
+      <div class="col-md-6">
+        <!-- Projects table wich should be populated by via an API call [-- *API NAME* --] -->        
+        <project-table title="Projects" item-list="$ctrl.projects[0].itemList"></project-table><br/>
+
+        <!-- OPPORTUNITIES table wich should be populated via an API call [-- *API NAME* --] -->
+        <project-table title="Opportunities" item-list="$ctrl.projects[1].itemList"></project-table><br/>
+        <!-- **************************** END of OPPORTUNITIES table ************************ -->      
+      </div>
+      <div class="col-md-6">
+        <!-- ISSUES & RISKS table wich should be populated via an API call [-- *API NAME* --] -->
+        <project-table title="Issues and Risks" item-list="$ctrl.projects[2].itemList"></project-table><br/>
+      </div>
+    </div>
+  </div>
+</div>       

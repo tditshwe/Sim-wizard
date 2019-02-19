@@ -1,0 +1,22 @@
+<table class="table table-dark table-striped">
+  <thead>
+    <th colspan="5">
+      <h4> {{ $ctrl.title }} </h4>
+    </th>                
+    <tr scope = "row">
+      <th scope="col">Description</th>
+      <th scope="col">Owner</th>
+      <th scope="col">Status</th>
+      <th scope="col">Target Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr scope = "row" ng-repeat="item in $ctrl.itemList">
+      <td> {{ item.description }} </td>
+      <td> {{ item.owner }} </td>
+      <td >{{ item.status }} </td>
+      <td> {{ item.targetDate }} </td>
+    </tr>
+    <tr ng-if="$ctrl.itemList.length == 0"><td colspan="4" align="center">No data</td></tr>
+  </tbody>
+</table>

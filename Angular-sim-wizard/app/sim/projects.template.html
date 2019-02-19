@@ -1,0 +1,75 @@
+<div id="rowsContainer" class="SubMenu">
+  <div class="card" style="">
+    <div class="col-sm-12"><br/><h4>step {{ $ctrl.step + 2 }} of 4</h4><br/></div>
+    <div class="col-sm-12"><h1>{{ $ctrl.projects[$ctrl.step].stage }}</h1><br/></div>
+
+    <form name="form" action="javascript:void(0);" novalidate>
+      <!-- Header Row ( column names describing input field names e.g. Service name/description) -->
+      <div class="row">
+        <div class="col-sm-1"><br/></div>
+        <div class="col-md-3 style="background: white;">
+          <label for="opportunity"><h4>{{ $ctrl.projects[$ctrl.step].stage }} Description</h4></label>
+        </div>
+        <div class="col-md-2" style="background: white;">
+          <label for="owner"><h4>Owner</h4></label>
+        </div>
+        <div class="col-md-2" style="background: white;">
+          <label for="projectStatus"><h4>Status</h4></label>
+        </div>
+        <div class="col-md-2" style="background: white;">
+          <label for="targetDate"><h4>Target Date</h4></label>
+        </div>
+      </div>
+
+    <div class="row" ng-repeat="project in $ctrl.projects[$ctrl.step].itemList">
+      <div class="col-sm-1"><br/></div>
+        <!-- Input fields for Issue & Risk name/ description -->
+      <div class="col-sm-3">        
+         <input type="text" ng-model="project.description" ng-change="$ctrl.updateDisabled()" name="description{{ $index }}" aria-label="owner" class="form-control" placeholder="{{ $ctrl.projects[$ctrl.step].stage }}..." required />
+         <span ng-show="form.description{{ $index }}.$error.required" style="color:red">Description is required.</span>
+      </div>
+      <!-- Input fields for risk owner name -->
+      <div class="col-sm-2">        
+        <input type="text" ng-model="project.owner" ng-change="$ctrl.updateDisabled()" name="owner{{ $index }}" aria-label="owner" class="form-control" placeholder="Owner..." required />
+        <span ng-show="form.owner{{ $index }}.$error.required" style="color:red">Owner is required.</span>
+      </div>
+      <!-- Dropdown list for Issue/Risk status -->
+      <div class="col-sm-2">                        
+        <select ng-model="project.status" ng-change="$ctrl.updateDisabled()" name="status{{ $index }}" class="form-control" style="height:auto" select>
+          <option>--Select--</option>
+          <option>Good</option>
+          <option>Medium</option>
+          <option>Bad</option>
+        </select>
+        <span ng-show="form.status{{ $index }}.$error.select" style="color:red">Please select status!</span>
+      </div>
+      <!-- Report Date  field with a 'Date picker'-->
+      <div class="col-sm-2">          
+        <input type="date" name="targetDate{{ $index }}" ng-change="$ctrl.updateDisabled()" ng-model="project.targetDate" aria-label="month1" class="form-control" required />
+        <span ng-show="form.targetDate{{ $index }}.$error.required" style="color:red">Specify target date.</span>
+      </div>
+      <!-- Remove button to delete a row of input fieds -->
+      <div class="col-md-1 form-group">         
+        <button class="btn btn-danger btn-block" ng-click="$ctrl.removeProject(project)">remove</button>       
+      </div>
+    </div><br/>
+
+    <!-- Collection of Buttons on bottom of the form -->
+    <div class="row">
+      <!-- Creates Space to keep button on the far right of the form, but keeps room for future additions-->
+    <div class="col-sm-5"></div>
+    <!-- Button to add a row of input fields -->
+    <div class="col-sm-3">
+      <button class="btn btn-primary btn-block" ng-click="$ctrl.addProject()">Add</button>
+    </div>
+    <div class="col-sm-3">
+      <!-- Back button to move from current form page to the previous page -->
+      <button class="btn btn-primary btn-block" ng-click="$ctrl.back()">Back</button><br/>
+      <!-- Button to move from current form page to the next form page -->
+      <button ng-disabled="$ctrl.isDisabled" class="btn btn-primary btn-block" ng-if="$ctrl.step < 2" ng-click="$ctrl.next()">Next >> </button>
+      <button ng-disabled="$ctrl.isDisabled" class="btn btn-primary btn-block" ng-if="$ctrl.step == 2" ng-click="$ctrl.submit()">Submit</button>
+    </div>
+    </div><br/>
+    </form>
+  </div>
+  </div>
