@@ -63,6 +63,11 @@ angular.module("projectList").component("projectList", {
 	        }
       	}
 
+        this.cancel = function()
+        {
+          $location.path('/home');
+        }
+
       	this.next = function()
       	{
       		this.step += 1;

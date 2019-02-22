@@ -1,17 +1,16 @@
 <div class="SubMenu">
     <div class="card" style="">
-      <br/>
-      <div class="row">
-        <div class="col-sm-12">
+      <div class="card-header">
+        <div class="row">
           <div class="col-sm-3">
-            <button class="btn btn-primary btn-block" ng-click="$ctrl.new()">{{ $ctrl.currentButton }}</button><br/>
+            <button ng-disabled="$ctrl.dataError" class="btn btn-primary btn-block" ng-click="$ctrl.new()">{{ $ctrl.currentButton }}</button>
           </div>
           <div ng-if="$ctrl.wizardExists" class="col-sm-3">
             <button class="btn btn-danger btn-block" ng-click="$ctrl.delete()">Delete Wizard</button><br/>
           </div>
-        </div>
+        </div>    
       </div>
-      <div class ="SIMSLAPerformancedisplay card-body">    
+      <div class ="card-body">    
       <!-- SLA Performance table wich should be populated by via an API call [-- *API NAME* --] -->  
       <table class="table table-bordered table-striped">
         <thead>
@@ -51,22 +50,23 @@
             <td>{{ row.rowData.Dec }}</td>
           </tr>
           <tr ng-if="$ctrl.services.length == 0 || $ctrl.dataError"><td colspan="13" align="center">{{ $ctrl.dataStatus }}</td></tr>
+          <tr ng-if="$ctrl.loading"><td colspan="13" align="center" bgcolor="#FFFFFF"><img width="60" src="basicloader.gif">Loading data ...</td></tr>
         </tbody>
       </table><br/><br/>
-    </div>
 
-    <div class="row">      
-      <div class="col-md-6">
-        <!-- Projects table wich should be populated by via an API call [-- *API NAME* --] -->        
-        <project-table title="Projects" item-list="$ctrl.projects[0].itemList"></project-table><br/>
+      <div class="row">      
+        <div class="col-md-6">
+          <!-- Projects table wich should be populated by via an API call [-- *API NAME* --] -->        
+          <project-table title="Projects" data="$ctrl.projectData" item-list="$ctrl.projects[0].itemList"></project-table><br/>
 
-        <!-- OPPORTUNITIES table wich should be populated via an API call [-- *API NAME* --] -->
-        <project-table title="Opportunities" item-list="$ctrl.projects[1].itemList"></project-table><br/>
-        <!-- **************************** END of OPPORTUNITIES table ************************ -->      
-      </div>
-      <div class="col-md-6">
-        <!-- ISSUES & RISKS table wich should be populated via an API call [-- *API NAME* --] -->
-        <project-table title="Issues and Risks" item-list="$ctrl.projects[2].itemList"></project-table><br/>
+          <!-- OPPORTUNITIES table wich should be populated via an API call [-- *API NAME* --] -->
+          <project-table title="Opportunities" data="$ctrl.projectData" item-list="$ctrl.projects[1].itemList"></project-table><br/>
+          <!-- **************************** END of OPPORTUNITIES table ************************ -->      
+        </div>
+        <div class="col-md-6">
+          <!-- ISSUES & RISKS table wich should be populated via an API call [-- *API NAME* --] -->
+          <project-table title="Issues and Risks" data="$ctrl.projectData" item-list="$ctrl.projects[2].itemList"></project-table><br/>
+        </div>
       </div>
     </div>
   </div>

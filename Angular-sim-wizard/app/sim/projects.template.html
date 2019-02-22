@@ -1,8 +1,10 @@
 <div id="rowsContainer" class="SubMenu">
   <div class="card" style="">
-    <div class="col-sm-12"><br/><h4>step {{ $ctrl.step + 2 }} of 4</h4><br/></div>
+    <div class="card-header">
+      <div class="col-sm-12"><br/><h4>step {{ $ctrl.step + 2 }} of 4</h4><br/></div>
+    </div>
+    <div class="card-body">
     <div class="col-sm-12"><h1>{{ $ctrl.projects[$ctrl.step].stage }}</h1><br/></div>
-
     <form name="form" action="javascript:void(0);" novalidate>
       <!-- Header Row ( column names describing input field names e.g. Service name/description) -->
       <div class="row">
@@ -53,23 +55,29 @@
         <button class="btn btn-danger btn-block" ng-click="$ctrl.removeProject(project)">remove</button>       
       </div>
     </div><br/>
-
+  </div>
+  <div class="card-footer">
     <!-- Collection of Buttons on bottom of the form -->
-    <div class="row">
-      <!-- Creates Space to keep button on the far right of the form, but keeps room for future additions-->
-    <div class="col-sm-5"></div>
-    <!-- Button to add a row of input fields -->
-    <div class="col-sm-3">
-      <button class="btn btn-primary btn-block" ng-click="$ctrl.addProject()">Add</button>
+    <div class="row justify-content-md-center">
+      <div class="col-sm-2">
+      <!-- Back button to move from current form page to the previous page -->
+      <button class="btn btn-primary btn-block" ng-click="$ctrl.cancel()">Cancel</button><br/>
     </div>
-    <div class="col-sm-3">
+      <div class="col-sm-2">
       <!-- Back button to move from current form page to the previous page -->
       <button class="btn btn-primary btn-block" ng-click="$ctrl.back()">Back</button><br/>
+    </div>
+    <!-- Button to add a row of input fields -->
+    <div class="col-sm-2">
+      <button class="btn btn-primary btn-block" ng-click="$ctrl.addProject()">Add {{  $ctrl.projects[$ctrl.step].category }}</button>
+    </div>
+    <div class="col-sm-2">
       <!-- Button to move from current form page to the next form page -->
-      <button ng-disabled="$ctrl.isDisabled" class="btn btn-primary btn-block" ng-if="$ctrl.step < 2" ng-click="$ctrl.next()">Next >> </button>
+      <button ng-disabled="$ctrl.isDisabled" class="btn btn-primary btn-block" ng-if="$ctrl.step < 2" ng-click="$ctrl.next()">Next</button>
       <button ng-disabled="$ctrl.isDisabled" class="btn btn-primary btn-block" ng-if="$ctrl.step == 2" ng-click="$ctrl.submit()">Submit</button>
     </div>
-    </div><br/>
+    </div>
+  </div>
     </form>
   </div>
   </div>

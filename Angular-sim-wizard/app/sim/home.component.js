@@ -8,12 +8,16 @@ angular.module("home").component("home", {
 		this.wizardExists = false;
 		this.dataError = false;
 		this.dataStatus = "No data"
+		this.projectData = {error: false, status: "No data", loading: false}
 
 		this.$onInit = function()
 		{
 			function taskFilter(task) {
 		      return task.category == this;
 		    }
+
+		    ctrl.loading = true;
+		    ctrl.projectData.loading = true;
 
 			$http.get("http://localhost:5000/angulardashboardwebapi").then(function(response) {
 				ctrl.projects = [{
@@ -61,12 +65,18 @@ angular.module("home").component("home", {
 			}).catch(function() {
 				ctrl.dataError = true;
 				ctrl.dataStatus = "Data error!"
+				ctrl.projectData.error = true;
+				ctrl.projectData.status = "Data error!";
 
       			SweetAlert.swal({
 		        	type: "error",
 		            title: "Connection failed",
 		            text: "Error fetcing data"
 		        });
+      		}).
+      		finally(function() {
+      			ctrl.loading = false;
+      			ctrl.projectData.loading = false;
       		});
 		}
 

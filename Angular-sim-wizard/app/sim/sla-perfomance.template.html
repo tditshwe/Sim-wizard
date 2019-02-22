@@ -1,83 +1,89 @@
 <div class="SubMenu">
 	<div class="card" style="">
+		<div class="card-header">
+			<div class="col-sm-12"><br/><h4>Step 1 of 4</h4></div>
+		</div>
+		<div class="card-body">
+			<div class="col-sm-9"><br/><h1>Services</h1></div>
 
-		<div class="col-sm-12"><br/><h4>Step 1 of 4</h4></div>
-		<div class="col-sm-9"><br/><h1>Services</h1></div>
-
-		<form name="form" action="javascript:void(0);" novalidate>
-			<div class="row">
-				<br/><div class="col-md-12"></div>            
-			</div>
-			<!-- Header Row ( column names describing input field names e.g. Service name/description) -->
-			<div class="row">
-				<div class="col-sm-1 panel-heading center-block text-center">
-		         
-	        	</div>     
-				<div class="col-md-4" style="background: white;">  
-				  <label for="serviceName0"><h4>Service :</h4></label>
-				</div>        
-				<div class="col-md-2" style="background: white;">  
-				  <label for="status0"><h4>Status :</h4></label>
+			<form name="form" action="javascript:void(0);" novalidate>
+				<div class="row">
+					<br/><div class="col-md-12"></div>            
 				</div>
-				<div class="col-md-2" style="background: white;">  
-				  <label for="month"><h4>Month :</h4></label>
+				<!-- Header Row ( column names describing input field names e.g. Service name/description) -->
+				<div class="row">
+					<div class="col-sm-1 panel-heading center-block text-center">
+			         
+		        	</div>     
+					<div class="col-md-4" style="background: white;">  
+					  <label for="serviceName0"><h4>Service :</h4></label>
+					</div>        
+					<div class="col-md-2" style="background: white;">  
+					  <label for="status0"><h4>Status :</h4></label>
+					</div>
+					<div class="col-md-2" style="background: white;">  
+					  <label for="month"><h4>Month :</h4></label>
+					</div>
 				</div>
-			</div>
-			<div class="row form-group" ng-repeat="service in $ctrl.services">
-			<div class="col-sm-1"></div>
-	        <div class="col-md-4">
-	        	<input ng-model="service.name" ng-change="$ctrl.updateDisabled()" name="name{{ $index }}" type="text" class="form-control" required />
-	        	<span ng-show="form.name{{ $index }}.$error.required" style="color:red">Service name required.</span>
-	        </div>
-	        <!-- Dropdown list for service status -->
-	        <div class="col-md-2 ">
-	          <select ng-model="service.status" ng-change="$ctrl.updateDisabled()" name="status{{ $index }}" class="form-control" style="height:auto" select>
-	            <option>--Select--</option>
-	            <option>Good</option>
-	            <option>Medium</option>
-	            <option>Bad</option>
-	          </select>
-	          <span ng-show="form.status{{ $index }}.$error.select" style="color:red">Please select status!</span>
-	        </div>
-	        <div class="col-md-2" id='reportDateField'>
-	          <select ng-model="service.month" ng-change="$ctrl.updateDisabled()" name="month{{ $index }}" class="form-control" select>
-	          	<option>--Select--</option>
-	            <option>Jan</option>
-	            <option>Feb</option>
-	            <option>Mar</option>
-	            <option>Apr</option>
-	            <option>May</option>
-	            <option>Jun</option>
-	            <option>Jul</option>
-	            <option>Aug</option>
-	            <option>Sep</option>
-	            <option>Oct</option>
-	            <option>Nov</option>
-	            <option>Dec</option>
-	          </select>
-	          <span ng-show="form.month{{ $index }}.$error.select" style="color:red">Please select month!</span>
-	        </div>
-	        <!-- Remove button to delete a row of input fieds -->
-	        <div class="col-md-1 form-group">      
-	          <button class="btn btn-danger btn-block" ng-click="$ctrl.removeService(service)">remove</button>
-	        </div>
-	        </div>
-	        <br/><br/>
-	      <!-- Collection of Buttons on bottom of the form -->
-	      <div class="row">
-	        <!-- Creates Space to keep button on the far right of the form, but keeps room for future additions-->
-	        <div class="col-sm-5"></div>        
-	        <div class="col-sm-3">
-	          <!-- Button to add a row of input fields -->
-	          <button class="btn btn-primary btn-block" ng-click="$ctrl.addService()">Add service +</button><br/>
-	        </div>
-	        <div class="col-sm-3">
-	          	<!-- Back button to move from current form page to the previous page -->
-	        	<button class="btn btn-primary btn-block" type="submit" ng-click="$ctrl.redirect('/home')">Back</button><br/>
-	            <!-- Button to move from current form page to the next form page -->
-	         	<button ng-disabled="$ctrl.isDisabled" class="btn btn-primary btn-block" ng-click="$ctrl.redirect('/projects')" >Next >></button>
-	        </div>
-	      </div><br/>
-		</form>
+				<div class="row form-group" ng-repeat="service in $ctrl.services">
+					<div class="col-sm-1"></div>
+			        <div class="col-md-4">
+			        	<input ng-model="service.name" ng-change="$ctrl.updateDisabled()" name="name{{ $index }}" type="text" class="form-control" required />
+			        	<span ng-show="form.name{{ $index }}.$error.required" style="color:red">Service name required.</span>
+			        </div>
+			        <!-- Dropdown list for service status -->
+			        <div class="col-md-2 ">
+			          <select ng-model="service.status" ng-change="$ctrl.updateDisabled()" name="status{{ $index }}" class="form-control" style="height:auto" select>
+			            <option>--Select--</option>
+			            <option>Good</option>
+			            <option>Medium</option>
+			            <option>Bad</option>
+			          </select>
+			          <span ng-show="form.status{{ $index }}.$error.select" style="color:red">Please select status!</span>
+			        </div>
+			        <div class="col-md-2" id='reportDateField'>
+			          <select ng-model="service.month" ng-change="$ctrl.updateDisabled()" name="month{{ $index }}" class="form-control" select>
+			          	<option>--Select--</option>
+			            <option>Jan</option>
+			            <option>Feb</option>
+			            <option>Mar</option>
+			            <option>Apr</option>
+			            <option>May</option>
+			            <option>Jun</option>
+			            <option>Jul</option>
+			            <option>Aug</option>
+			            <option>Sep</option>
+			            <option>Oct</option>
+			            <option>Nov</option>
+			            <option>Dec</option>
+			          </select>
+			          <span ng-show="form.month{{ $index }}.$error.select" style="color:red">Please select month!</span>
+			        </div>
+			        <!-- Remove button to delete a row of input fieds -->
+			        <div class="col-md-1 form-group">      
+			          <button class="btn btn-danger btn-block" ng-click="$ctrl.removeService(service)">remove</button>
+			        </div>
+		        </div>
+		    </div>
+			    <!-- Collection of Buttons on bottom of the form -->
+				<div class="card-footer text-muted">
+				<div class="row justify-content-md-center">
+				<div class="col-sm-2">
+					<!-- Back button to move from current form page to the previous page -->
+					<button class="btn btn-primary btn-block" type="submit" ng-click="$ctrl.redirect('/home')">Cancel</button><br/>
+				</div>
+				<!-- Creates Space to keep button on the far right of the form, but keeps room for future additions-->       
+				<div class="col-sm-2">
+				  <!-- Button to add a row of input fields -->
+				  <button class="btn btn-primary btn-block" ng-click="$ctrl.addService()">Add service</button><br/>
+				</div>
+				<div class="col-sm-2">
+				    <!-- Button to move from current form page to the next form page -->
+				 	<button ng-disabled="$ctrl.isDisabled" class="btn btn-primary btn-block" ng-click="$ctrl.redirect('/projects')" >Next</button>
+				</div>
+				</div><br/>
+				</div>
+			</form>
+		</div>
 	</div>
 </div>
