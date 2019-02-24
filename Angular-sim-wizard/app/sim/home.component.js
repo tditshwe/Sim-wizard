@@ -9,6 +9,7 @@ angular.module("home").component("home", {
 		this.dataError = false;
 		this.dataStatus = "No data"
 		this.projectData = {error: false, status: "No data", loading: false}
+		this.deleteValue = "Delete Wizard";
 
 		this.$onInit = function()
 		{
@@ -62,7 +63,7 @@ angular.module("home").component("home", {
 					Sim.setProjects(ctrl.projects);
 					Sim.setServices(ctrl.services);
 				}
-			}).catch(function() {
+			}).catch(function(error) {
 				ctrl.dataError = true;
 				ctrl.dataStatus = "Data error!"
 				ctrl.projectData.error = true;
@@ -71,7 +72,7 @@ angular.module("home").component("home", {
       			SweetAlert.swal({
 		        	type: "error",
 		            title: "Connection failed",
-		            text: "Error fetcing data"
+		            text: setMessage(error, "Error fetcing data")
 		        });
       		}).
       		finally(function() {
@@ -105,6 +106,8 @@ angular.module("home").component("home", {
 	        }, 
 	        function(canDelete) { //Function that triggers on user action.
 	            if(canDelete) {
+	            	ctrl.deleteValue = "Deleting...";
+
 	            	$http.delete("http://localhost:5000/angulardashboardwebapi").then(function()
 			    	{
 			    		for (let i = 0; i < ctrl.projects.length; i++)
@@ -116,9 +119,30 @@ angular.module("home").component("home", {
 			    		ctrl.currentButton = "New Wizard";
 						ctrl.wizardExists = false;
 			    		SweetAlert.swal("Wizard Deleted!");
-			    	})	                
+			    	}).catch(function(error) {
+		      			SweetAlert.swal({
+				        	type: "error",
+				            title: "Deleting Error",
+				            text: setMessage(error, "Error deleting wizard")
+				        });
+		      		}).
+		      		finally(function() {
+		      			ctrl.deleteValue = "Delete Wizard";
+		      		});	                
 	            }
 	        });
+	    }
+
+	    function setMessage(error, m)
+	    {
+	    	var message;
+
+	    	if (error.data)
+              message = error.data;
+            else
+              message = m;
+
+        	return message
 	    }
 	}
 });

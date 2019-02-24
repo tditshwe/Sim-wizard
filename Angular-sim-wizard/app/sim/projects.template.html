@@ -74,7 +74,7 @@
     <div class="col-sm-2">
       <!-- Button to move from current form page to the next form page -->
       <button ng-disabled="$ctrl.isDisabled" class="btn btn-primary btn-block" ng-if="$ctrl.step < 2" ng-click="$ctrl.next()">Next</button>
-      <button ng-disabled="$ctrl.isDisabled" class="btn btn-primary btn-block" ng-if="$ctrl.step == 2" ng-click="$ctrl.submit()">Submit</button>
+      <button ng-disabled="$ctrl.isDisabled" class="btn btn-primary btn-block" ng-if="$ctrl.step == 2" ng-click="$ctrl.submit()">{{ $ctrl.submitValue }}</button>
     </div>
     </div>
   </div>

@@ -2,7 +2,7 @@
 
 angular.module("projectList").component("projectList", {
 	templateUrl: 'sim/projects.template.html',
-	controller: ['$location', '$http', 'Sim', function projectController($location, $http, Sim) {
+	controller: ['$location', '$http', 'Sim', 'SweetAlert', function projectController($location, $http, Sim, SweetAlert) {
 		if (Sim.getProjects() === undefined)
 			this.projects = [{
 				stage: "Issues",
@@ -23,6 +23,8 @@ angular.module("projectList").component("projectList", {
 			this.projects = Sim.getProjects();
 
     	this.step = 0;
+      this.submitValue = "Submit";
+      let ctrl = this;
 
       this.updateDisabled = function() {
         var invalidForm = false;
@@ -84,6 +86,7 @@ angular.module("projectList").component("projectList", {
       	this.submit = function()
       	{
       		var tasks = [];
+          this.submitValue = "Submiting..."
 
       		this.projects.forEach(p => {
       			var tList = p.itemList;
@@ -102,10 +105,23 @@ angular.module("projectList").component("projectList", {
       		$http.post("http://localhost:5000/angulardashboardwebapi", body).then(function(response) {
       			$location.path('/home');
       			//Sim.setServices([]);
-            	Sim.resetRemoved();
+            Sim.resetRemoved();
       		})
       		.catch(function(error) {
-      			alert(error.data);
+            var message;
+
+            if (error.data)
+              message = error.data;
+            else
+              message = "Error submiting wizard";
+
+      			SweetAlert.swal({
+              type: "error",
+                title: "Submition error",
+                text: message
+            });
+
+            ctrl.submitValue = "Submit";
       		});
       	}
 	}

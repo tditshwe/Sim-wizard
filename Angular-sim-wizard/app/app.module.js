@@ -10,7 +10,7 @@ angular.module('phonecatApp', [
 ]);
 
 angular.module('serviceList', ['core.sim']);
-angular.module('projectList', ['core.sim']);
+angular.module('projectList', ['core.sim', 'oitozero.ngSweetAlert']);
 angular.module('home', ['projectTable', 'oitozero.ngSweetAlert']);
 angular.module('projectTable', [])
 angular.module('core', ['core.sim']);
