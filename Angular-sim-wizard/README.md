@@ -1,28 +1,17 @@
-# AngularJS Phone Catalog Tutorial Application
+# Sim Wizard
 
 
 ## Overview
 
-This application takes the developer through the process of building a web-application using
-AngularJS. The application is loosely based on the **Google Phone Gallery**, which no longer exists.
-Here is a historical reference: [Google Phone Gallery on WayBack][google-phone-gallery]
-
-Each tagged commit is a separate lesson teaching a single aspect of the framework.
-
-The full tutorial can be found at https://docs.angularjs.org/tutorial.
-
+This application demonstrates a web-application Wizard using AngularJS. The application also make restful requests to the Web Api implemented using ASP.Net Web APi 2 framework.
 
 ## Prerequisites
 
-### Git
-
-- A good place to learn about setting up git is [here][git-setup].
-- You can find documentation and download git [here][git-home].
-
 ### Node.js and Tools
 
-- Get [Node.js][node].
-- Install the tool dependencies: `npm install`
+###Visual Studio Code
+
+###Dot Net Core Framework
 
 
 ## Workings of the Application
