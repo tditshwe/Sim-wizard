@@ -6,7 +6,7 @@
             <button ng-disabled="$ctrl.dataError" class="btn btn-primary btn-block" ng-click="$ctrl.new()">{{ $ctrl.currentButton }}</button>
           </div>
           <div ng-if="$ctrl.wizardExists" class="col-sm-3">
-            <button class="btn btn-danger btn-block" ng-click="$ctrl.delete()">Delete Wizard</button><br/>
+            <button class="btn btn-danger btn-block" ng-click="$ctrl.delete()">{{ $ctrl.deleteValue }}</button><br/>
           </div>
         </div>    
       </div>
