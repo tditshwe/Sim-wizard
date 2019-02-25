@@ -4,7 +4,7 @@
 angular.
   module('serviceList').
   component('serviceList', {
-    templateUrl: 'sim/sla-perfomance.template.html',
+    templateUrl: 'sim/services.template.html',
     controller: ['$location', 'Sim', function serviceController($location, Sim) {    
 
       if (Sim.getServices() === undefined)
