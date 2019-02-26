@@ -1,6 +1,6 @@
 'use strict';
 
-// Register `phoneList` component, along with its associated controller and template
+// Register `serviceList` component, along with its associated controller and template
 angular.
   module('serviceList').
   component('serviceList', {
@@ -55,6 +55,9 @@ angular.
       }
 
       this.redirect = function(path) {
+        if (path == '/home')
+          Sim.resetRemoved();
+        //alert(JSON.stringify(Sim.getRemoved()));
         $location.path(path)
       }
     }

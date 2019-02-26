@@ -2,7 +2,7 @@
 
 ## Overview
 
-This application is a front-end of the wizard for creating different types of project categories and wizard is stored and displayed on tables on the home page. One of the tables is a pivot format of the wizard data from the database.
+This application is a front-end of the wizard for creating different types of project categories and the wizard is stored and displayed on tables on the home page. One of the tables is a pivot format of the wizard data from the database.
 
 ## Development with `angular-sim-wizard`
 

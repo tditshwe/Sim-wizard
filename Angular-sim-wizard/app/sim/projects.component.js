@@ -67,6 +67,7 @@ angular.module("projectList").component("projectList", {
 
         this.cancel = function()
         {
+          Sim.resetRemoved();
           $location.path('/home');
         }
 
@@ -104,7 +105,6 @@ angular.module("projectList").component("projectList", {
 
       		$http.post("http://localhost:5000/angulardashboardwebapi", body).then(function(response) {
       			$location.path('/home');
-      			//Sim.setServices([]);
             Sim.resetRemoved();
       		})
       		.catch(function(error) {
