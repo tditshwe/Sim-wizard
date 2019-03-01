@@ -1,0 +1,14 @@
+C:\Users\kgothatsod\Desktop\Sim-wizard\SimWizardApi\bin\Debug\netcoreapp2.1\SimWizardApi.deps.json
+C:\Users\kgothatsod\Desktop\Sim-wizard\SimWizardApi\bin\Debug\netcoreapp2.1\SimWizardApi.runtimeconfig.json
+C:\Users\kgothatsod\Desktop\Sim-wizard\SimWizardApi\bin\Debug\netcoreapp2.1\SimWizardApi.runtimeconfig.dev.json
+C:\Users\kgothatsod\Desktop\Sim-wizard\SimWizardApi\bin\Debug\netcoreapp2.1\SimWizardApi.dll
+C:\Users\kgothatsod\Desktop\Sim-wizard\SimWizardApi\bin\Debug\netcoreapp2.1\SimWizardApi.pdb
+C:\Users\kgothatsod\Desktop\Sim-wizard\SimWizardApi\obj\Debug\netcoreapp2.1\SimWizardApi.csprojAssemblyReference.cache
+C:\Users\kgothatsod\Desktop\Sim-wizard\SimWizardApi\obj\Debug\netcoreapp2.1\SimWizardApi.csproj.CoreCompileInputs.cache
+C:\Users\kgothatsod\Desktop\Sim-wizard\SimWizardApi\obj\Debug\netcoreapp2.1\SimWizardApi.RazorAssemblyInfo.cache
+C:\Users\kgothatsod\Desktop\Sim-wizard\SimWizardApi\obj\Debug\netcoreapp2.1\SimWizardApi.RazorAssemblyInfo.cs
+C:\Users\kgothatsod\Desktop\Sim-wizard\SimWizardApi\obj\Debug\netcoreapp2.1\SimWizardApi.AssemblyInfoInputs.cache
+C:\Users\kgothatsod\Desktop\Sim-wizard\SimWizardApi\obj\Debug\netcoreapp2.1\SimWizardApi.AssemblyInfo.cs
+C:\Users\kgothatsod\Desktop\Sim-wizard\SimWizardApi\obj\Debug\netcoreapp2.1\SimWizardApi.RazorTargetAssemblyInfo.cache
+C:\Users\kgothatsod\Desktop\Sim-wizard\SimWizardApi\obj\Debug\netcoreapp2.1\SimWizardApi.dll
+C:\Users\kgothatsod\Desktop\Sim-wizard\SimWizardApi\obj\Debug\netcoreapp2.1\SimWizardApi.pdb

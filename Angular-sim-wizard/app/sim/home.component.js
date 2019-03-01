@@ -19,66 +19,69 @@ angular.module("home").component("home", {
 
 		    ctrl.loading = true;
 		    ctrl.projectData.loading = true;
+		    $http.get('config.json').then(function(config) {
+		    	Sim.setConfig(config.data);
 
-			$http.get("http://localhost:5000/angulardashboardwebapi").then(function(response) {
-				ctrl.projects = [{
-					stage: "Issues",
-					itemList: [],
-					category: "issue"
-				},
-				{
-					stage: "Projects",
-					itemList: [],
-					category: "project"
-				},
-				{
-					stage: "Opportunities",
-					itemList: [],
-					category: "opportunity"
-				}];
+				$http.get(config.data.apiWizard).then(function(response) {
+					ctrl.projects = [{
+						stage: "Issues",
+						itemList: [],
+						category: "issue"
+					},
+					{
+						stage: "Projects",
+						itemList: [],
+						category: "project"
+					},
+					{
+						stage: "Opportunities",
+						itemList: [],
+						category: "opportunity"
+					}];
 
-				ctrl.services = [];
+					ctrl.services = [];
 
-				if (response.data.tasks.length != 0 || response.data.services.length != 0)
-				{
-					ctrl.currentButton = "Edit Wizard";
-					ctrl.wizardExists = true;
+					if (response.data.tasks.length != 0 || response.data.services.length != 0)
+					{
+						ctrl.currentButton = "Edit Wizard";
+						ctrl.wizardExists = true;
 
-					response.data.tasks.forEach(e => {
-						e.targetDate = dateFormat(e.targetDate, "dd/mm/yyyy");
-					});
+						response.data.tasks.forEach(e => {
+							e.targetDate = dateFormat(e.targetDate, "dd/mm/yyyy");
+						});
 
-				    let projects = response.data.tasks.filter(taskFilter, "project"); 
-				    let issues = response.data.tasks.filter(taskFilter, "issue");
-				    let opportunities = response.data.tasks.filter(taskFilter, "opportunity");
+					    let projects = response.data.tasks.filter(taskFilter, "project"); 
+					    let issues = response.data.tasks.filter(taskFilter, "issue");
+					    let opportunities = response.data.tasks.filter(taskFilter, "opportunity");
 
-				    ctrl.projects[0].itemList = issues;
-				    ctrl.projects[1].itemList = projects;
-				    ctrl.projects[2].itemList = opportunities;
-				    ctrl.pivotRows = response.data.pivotRows;
-				    ctrl.services = response.data.services;
+					    ctrl.projects[0].itemList = issues;
+					    ctrl.projects[1].itemList = projects;
+					    ctrl.projects[2].itemList = opportunities;
+					    ctrl.pivotRows = response.data.pivotRows;
+					    ctrl.services = response.data.services;
 
-				    //alert(JSON.stringify(ctrl.pivotRows[0].rowData.Jan));
+					    //alert(JSON.stringify(ctrl.pivotRows[0].rowData.Jan));
 
-					Sim.setProjects(ctrl.projects);
-					Sim.setServices(ctrl.services);
-				}
-			}).catch(function(error) {
-				ctrl.dataError = true;
-				ctrl.dataStatus = "Data error!"
-				ctrl.projectData.error = true;
-				ctrl.projectData.status = "Data error!";
+						Sim.setProjects(ctrl.projects);
+						Sim.setServices(ctrl.services);
+					}
+				}).catch(function(error) {
+					ctrl.dataError = true;
+					ctrl.dataStatus = "Data error!"
+					ctrl.projectData.error = true;
+					ctrl.projectData.status = "Data error!";
 
-      			SweetAlert.swal({
-		        	type: "error",
-		            title: "Connection failed",
-		            text: setMessage(error, "Error fetcing data")
-		        });
-      		}).
-      		finally(function() {
-      			ctrl.loading = false;
-      			ctrl.projectData.loading = false;
-      		});
+	      			SweetAlert.swal({
+			        	type: "error",
+			            title: "Connection failed",
+			            text: setMessage(error, "Error fetcing data")
+			        });
+	      		}).
+	      		finally(function() {
+	      			ctrl.loading = false;
+	      			ctrl.projectData.loading = false;
+	      		});
+	      	});
 		}
 
 		this.new = function() {
@@ -108,7 +111,7 @@ angular.module("home").component("home", {
 	            if(canDelete) {
 	            	ctrl.deleteValue = "Deleting...";
 
-	            	$http.delete("http://localhost:5000/angulardashboardwebapi").then(function()
+	            	$http.delete(Sim.getConfig().apiWizard).then(function()
 			    	{
 			    		for (let i = 0; i < ctrl.projects.length; i++)
 			    		{

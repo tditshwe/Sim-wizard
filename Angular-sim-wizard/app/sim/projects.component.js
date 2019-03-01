@@ -103,7 +103,7 @@ angular.module("projectList").component("projectList", {
             removed: Sim.getRemoved()
       		};
 
-      		$http.post("http://localhost:5000/angulardashboardwebapi", body).then(function(response) {
+      		$http.post(Sim.getConfig().apiWizard, body).then(function(response) {
       			$location.path('/home');
             Sim.resetRemoved();
       		})

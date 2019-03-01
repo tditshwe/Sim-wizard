@@ -1,7 +1,7 @@
 
 angular.module('core.sim').
 	factory('Sim', function() {
-		var services, projects, removed = {};
+		var services, projects, config, removed = {};
 
         return {
             setServices: setServices,
@@ -10,7 +10,9 @@ angular.module('core.sim').
             getProjects: getProjects,
             getRemoved: getRemoved,
             setRemoved: setRemoved,
-            resetRemoved: resetRemoved
+            resetRemoved: resetRemoved,
+            setConfig: setConfig,
+            getConfig: getConfig
         };
 
         function getServices() {
@@ -23,6 +25,11 @@ angular.module('core.sim').
 
         function getProjects() {
             return projects;
+        }
+
+        function getConfig()
+        {
+            return config;
         }
 
         function setProjects(pList) {
@@ -41,6 +48,10 @@ angular.module('core.sim').
         function resetRemoved()
         {
             removed = {};
+        }
+
+        function setConfig(con) {
+            config = con;
         }
 	}
 );
