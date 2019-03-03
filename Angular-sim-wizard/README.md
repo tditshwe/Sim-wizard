@@ -10,7 +10,7 @@ The following steps describe how you can test and develop this application furth
 
 ### Installing Dependencies
 
-The application relies upon various Node.js tools, such as [Bower][bower]. You can install these by running:
+The application relies upon various Node.js tools, such as [Bower](https://bower.io/). You can install these by running:
 
 ```
 npm install
@@ -24,3 +24,4 @@ This will also run Bower, which will download the Angular files needed for the a
 - Run `npm start`.
 - Navigate your browser to [http://localhost:8000/](http://localhost:8000/) to see the application 
   running.
+- Make sure that the port number in the web api url on config.json matches with the one of `SimWizardApi` app when it's runningon the browser for successful http requests.

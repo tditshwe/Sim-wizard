@@ -6,7 +6,7 @@ This is a backend ASP.Net Core restful web service for Angular-sim-wizard. It ha
 
 ## Development with `SimWizardApi`
 
-The following steps describe how you can configure the required dev tools, test and run this Web Api.
+The following steps describe how you can configure the prerequisites, install and run the Web Api.
 
 ### Installing the Prerequisites
 
@@ -25,7 +25,9 @@ You can install the latest version of C# for Visual Studio Code from https://mar
 
 - Open the `SimWizardApi` folder with Visual Studio Code, when a dialog box asks if you want to add required assets to the project, select Yes.
 
-- Press Ctrl+F5 to run the app. In a browser, go to following URL: https://localhost:5001/swagger. The Swagger UI should display the version's information.
+- When there is another dialog box that tells you there are unresolved dependencies from 'SimWizardApi.csproj', select Restore and wait for it to complete the restore process. You may need to restart Visual Studio Code afterwards.
+
+- Press Ctrl+F5 to run the app. In a browser, go to following URL: https://localhost:[port]/swagger. The Swagger UI should display the version's information. The port number could be either 5000 or 5001 as specified in launchSettings.json and can be changed to any port number.
 
 
 
