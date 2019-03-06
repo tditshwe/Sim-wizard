@@ -1,7 +1,7 @@
 using SimWizardApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json.Linq;
+using System.IO;
 
 namespace SimWizardApi
 {
@@ -12,7 +12,10 @@ namespace SimWizardApi
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-JQQNVO0\SQLEXPRESS;Initial Catalog=SimWizard;Integrated Security=True;MultipleActiveResultSets=True");
+            IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile(Directory.GetCurrentDirectory() + "\\appsettings.json");
+            IConfigurationRoot config = builder.Build();
+
+            optionsBuilder.UseSqlServer(config["ConnectionString"]);
         }
     }
 }

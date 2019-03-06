@@ -27,6 +27,8 @@ You can install the latest version of C# for Visual Studio Code from https://mar
 
 - When there is another dialog box that tells you there are unresolved dependencies from 'SimWizardApi.csproj', select Restore and wait for it to complete the restore process. You may need to restart Visual Studio Code afterwards.
 
+- Change the database connection string on `appsettings.json` to the one corresponding to your database configuration.
+
 - Press Ctrl+F5 to run the app. In a browser, go to following URL: https://localhost:[port]/swagger. The Swagger UI should display the version's information. The port number could be either 5000 or 5001 as specified in launchSettings.json and can be changed to any port number.
 
 
