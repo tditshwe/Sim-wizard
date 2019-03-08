@@ -19,7 +19,11 @@ You can download and install .NET Core SDK 2.2 from https://dotnet.microsoft.com
 - C# for Visual Studio Code
 You can install the latest version of C# for Visual Studio Code from https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp
 
+### Configuring the database
+
 - It is assumed you already have SQL Server 2014 or later configured and running
+
+- The database setup can be found in `SimWizardSetup.sql` file
 
 ### Running the Web Api
 
